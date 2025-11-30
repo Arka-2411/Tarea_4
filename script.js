@@ -1,7 +1,4 @@
-// ==========================================
-// 1. REFERENCIAS GLOBALES (LOGIN E INVENTARIO)
-// ==========================================
-// Login
+
 const loginForm = document.getElementById('login-form');
 const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');
@@ -20,8 +17,6 @@ const btnGuardar = document.getElementById('btnGuardar');
 const btnCancelar = document.getElementById('btnCancelar');
 
 // ==========================================
-// 2. LÓGICA DE LOGIN
-// ==========================================
 if (loginForm) {
     loginForm.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -30,11 +25,11 @@ if (loginForm) {
         const contrasena = passwordInput.value.trim();
 
         if (usuario === 'Alfredo' && contrasena === '20240050') {
-            // Guardar sesión
+      
             localStorage.setItem('usuarioLogueado', 'true');
             loginError.textContent = '';
             
-            // Ir al inventario
+       
             ingresarAlInventario();
         } else {
             loginError.textContent = '❌ Acceso denegado: Usuario o contraseña incorrectos.';
@@ -44,32 +39,32 @@ if (loginForm) {
 }
 
 function ingresarAlInventario() {
-    // Ocultar login
+ 
     if(loginSection) loginSection.style.display = 'none';
     
-    // Mostrar dashboard
+   
     if(dashboardSection) {
         dashboardSection.style.display = 'block'; 
-        // AQUI ESTABA EL ERROR ANTES: Ahora sí encontrará la función porque está en el mismo archivo
+      
         cargarProductos();
     }
 }
 
 function cerrarSesion() {
     localStorage.removeItem('usuarioLogueado');
-    location.reload(); // Recarga la página para volver al login
+    location.reload(); 
 }
 
-// Verificar sesión al cargar la página
+
 document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('usuarioLogueado') === 'true') {
         ingresarAlInventario();
     }
 });
 
-// ==========================================
-// 3. LÓGICA DEL CRUD (INVENTARIO)
-// ==========================================
+
+
+
 
 function cargarProductos() {
     const productos = JSON.parse(localStorage.getItem('productos')) || [];
@@ -119,7 +114,7 @@ if (productForm) {
     });
 }
 
-// Estas funciones deben ser globales (window) para que funcionen desde el HTML onclick
+
 window.eliminarProducto = function(index) {
     if(confirm('¿Seguro que deseas eliminar este producto?')) {
         let productos = JSON.parse(localStorage.getItem('productos')) || [];

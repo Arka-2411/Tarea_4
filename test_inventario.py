@@ -50,7 +50,7 @@ def test_login_fallido(driver):
     error_msg = driver.find_element(By.ID, "login-error").text
     assert "Acceso denegado" in error_msg
 
-# 2. Prueba de Login Exitoso (Camino Feliz)
+# 2. Prueba de Login Exitoso (
 def test_login_exitoso(driver):
     driver.find_element(By.ID, "username").clear()
     driver.find_element(By.ID, "password").clear()
