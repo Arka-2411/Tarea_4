@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Inventario - Tarea 4</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="login-wrapper" id="login-wrapper">
+        <div class="login-container">
+            <div class="login-header">
+                <h2>Bienvenido</h2>
+                <p>Ingresa tus credenciales para gestionar el inventario</p>
+            </div>
+            
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="username">Usuario</label>
+                    <input type="text" id="username" placeholder="Ej: admin" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" placeholder="Ej: 12345" required>
+                </div>
+
+                <button type="submit" id="btnLogin">Ingresar</button>
+                
+                <p id="login-error" class="error-msg"></p>
+            </form>
+        </div>
+    </div>
+
+    <div id="dashboard-section" style="display: none;">
+        
+        <nav class="navbar">
+            <h2>📦 Sistema de Inventario</h2>
+            <div class="user-info">
+                <span>Admin: <strong>Alfredo</strong></span>
+                <button id="btnLogout" class="btn-logout" onclick="cerrarSesion()">Cerrar Sesión</button>
+            </div>
+        </nav>
+
+        <div class="main-content">
+            <div class="card form-card">
+                <h3>Administrar Producto</h3>
+                <form id="product-form">
+                    <input type="hidden" id="edit-index"> 
+                    
+                    <div class="form-group">
+                        <label>Nombre del Producto</label>
+                        <input type="text" id="nombreProducto" placeholder="Ej: Laptop HP" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Precio (RD$)</label>
+                        <input type="number" id="precioProducto" placeholder="Ej: 25000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Categoría</label>
+                        <select id="categoriaProducto">
+                            <option value="Tecnología">Tecnología</option>
+                            <option value="Hogar">Hogar</option>
+                            <option value="Oficina">Oficina</option>
+                        </select>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" id="btnGuardar">Guardar Producto</button>
+                        <button type="button" id="btnCancelar" class="hidden" onclick="cancelarEdicion()">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card table-card">
+                <h3>Listado de Existencias</h3>
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Categoría</th>
+                            <th>Precio</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-productos">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
